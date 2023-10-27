@@ -1,0 +1,3 @@
+//wsl$/Ubuntu/root/OS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+//wsl$/Ubuntu/root/OS/cmake-build-debug/CMakeFiles/edit_cache.dir
+//wsl$/Ubuntu/root/OS/cmake-build-debug/CMakeFiles/OS.dir

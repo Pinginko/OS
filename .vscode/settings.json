@@ -1,0 +1,4 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "cmake.sourceDirectory": "/wsl.localhost/Ubuntu/root/OS/MinGW/include/boost/safe_numerics/concept"
+}
