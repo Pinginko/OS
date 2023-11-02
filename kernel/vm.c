@@ -477,9 +477,37 @@ void printpgtb(pagetable_t pagetable, int depth)
       {
         printf(" ..");
       }
-      printf("%d: pte %p pa %p\n", i, pte, PTE2PA(pte));
+      printf("%d: pte %p pa %p", i, pte, PTE2PA(pte));
 
-      if ((pte & PTE_V) && (pte & (PTE_R | PTE_W | PTE_X)) == 0)
+      if (pte & PTE_V)
+      {
+        printf(" V ");
+      }
+
+      if (pte & PTE_R)
+      {
+        printf("R ");
+      }
+
+      if (pte & PTE_W)
+      {
+        printf("W ");
+      }
+
+      if (pte & PTE_X)
+      {
+        printf("X ");
+      }
+
+      if (pte & PTE_U)
+      {
+        printf("U ");
+      }
+
+      printf("\n");
+
+      // if ((pte & PTE_V) && (pte & (PTE_R | PTE_W | PTE_X)) == 0)
+      if ((pte & PTE_V) && depth < 2)
       {
         uint64 child = PTE2PA(pte);
         printpgtb((pagetable_t)child, depth + 1);
