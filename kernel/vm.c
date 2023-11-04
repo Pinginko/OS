@@ -464,7 +464,7 @@ int copyinstr(pagetable_t pagetable, char *dst, uint64 srcva, uint64 max)
   }
 }
 
-void printpgtb(pagetable_t pagetable, int depth)
+/*void printpgtb(pagetable_t pagetable, int depth)
 {
   // there are 2^9 = 512 PTEs in a page table.
   for (int i = 0; i < 512; i++)
@@ -512,6 +512,32 @@ void printpgtb(pagetable_t pagetable, int depth)
         uint64 child = PTE2PA(pte);
         printpgtb((pagetable_t)child, depth + 1);
       }
+    }
+  }
+}*/
+
+void printpgtbl(pagetable_t pagetable, int depth)
+{
+
+  for (int i = 0; i < 512; i++)
+  {
+    pte_t pte = pagetable[i];
+
+    if (pte & PTE_V)
+    {
+      printf("..");
+      for (j = 0; j < depth; j++)
+      {
+        pritf("..");
+      }
+      printf("")
+    }
+    printf("%d: pte %p pa %p", i, pte, PTE2PA(pte));
+    /* code */
+    if (pte & PTE_V && depth < 2)
+    {
+      uint64 child = PTE2PA(pte);
+      printpgtb((pagetable_t)child, depth + 1);
     }
   }
 }
